@@ -1,16 +1,17 @@
 package Game1;
 
 import java.awt.*;
+import java.util.Random;
 
 public class BasicEnemy extends GameObject {
     int size = 10;
     Handler handler;
-
+    Random r=new Random();
     public BasicEnemy(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
-        velX = 2;
-        velY = 2;
+        velX = r.nextInt(3)+1;
+        velY = r.nextInt(3)+1;
     }
 
     @Override

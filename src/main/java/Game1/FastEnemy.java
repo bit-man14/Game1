@@ -1,16 +1,17 @@
 package Game1;
 
 import java.awt.*;
+import java.util.Random;
 
 public class FastEnemy extends GameObject {
     int size = 5;
     Handler handler;
-
+    Random r=new Random();
     public FastEnemy(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
-        velX = 5;
-        velY = 5;
+        velX = r.nextInt(5)+1;
+        velY = r.nextInt(5)+1;
     }
 
     @Override
