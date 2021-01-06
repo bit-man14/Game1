@@ -49,7 +49,7 @@ public class HUD {
         g.setColor(Color.RED);
         g.setFont(new Font("Arial", Font.BOLD, 40));
         if (HEALTH == 0) {
-            g.drawString("GAME OVER", Game.WIDTH / 2 - 125, Game.HEIGHT / 2);
+            g.drawString("GAME OVER", Game.WIDTH / 2 - 115, Game.HEIGHT / 2-5);
         }
     }
 }

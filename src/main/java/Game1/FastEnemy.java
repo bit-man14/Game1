@@ -22,7 +22,7 @@ public class FastEnemy extends GameObject {
         if (y <= 0 || y >= Game.HEIGHT - 42 - size) velY *= -1;
         if (x <= 0 || x >= Game.WIDTH - 16 - size) velX *= -1;
         handler.addObject(new Trail(x,y,ID.Trail,Color.BLUE,size,size,0.06f,handler));
-        //collision();
+        collision();
     }
 
     private void collision() {
@@ -31,21 +31,29 @@ public class FastEnemy extends GameObject {
             if (tempObject.getId() == ID.Rocket) {
                 if (getBounds().intersects(tempObject.getBounds())) {
                     //collision
-                    velX*=-1;
-                    //handler.removeObject(this);
+                    //velX*=-1;
+                    handler.removeObject(this);
+                    Game.enemies--;
                     //System.out.println("E Rocket hit!");
                 }
             }
-            if (tempObject.getId() == ID.TestObj) {
+            if (tempObject.getId() == ID.FastEnemy) {
                 if (getBounds().intersects(tempObject.getBounds())) {
                     //collision
-                    //System.out.println("E Test object hit!");
+
+
+                    //System.out.println("E Rocket hit!");
                 }
             }
-            if (tempObject.getId() == ID.Player) {
+            if (tempObject.getId() == ID.BasicEnemy) {
                 if (getBounds().intersects(tempObject.getBounds())) {
                     //collision
-                    //System.out.println("E Player hit!");
+                    //velX*=-1;
+                    velX*=-1;
+                    velY*=-1;
+//                    handler.removeObject(this);
+//                    Game.enemies--;
+                    //System.out.println("E Rocket hit!");
                 }
             }
         }
