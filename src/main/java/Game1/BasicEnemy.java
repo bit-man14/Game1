@@ -33,6 +33,7 @@ public class BasicEnemy extends GameObject {
                     //collision
                     //velX*=-1;
                     handler.removeObject(this);
+                    Game.enemies--;
                     //System.out.println("E Rocket hit!");
                 }
             }

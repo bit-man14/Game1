@@ -22,6 +22,7 @@ public class Game extends Canvas implements Runnable {
     private HUD hud;
     private Spawn spawner;
     public static int frames = 0;
+    public static int enemies=2;
 
     public static int getFrames() {
         return frames;
@@ -139,7 +140,7 @@ public class Game extends Canvas implements Runnable {
         return var;
     }
 
-    public static void playMp3x()   {
+    public static void playMp3x() {
         AdvancedPlayer player = null;
         FileInputStream fis = null;
         try {
