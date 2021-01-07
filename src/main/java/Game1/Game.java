@@ -38,15 +38,15 @@ public class Game extends Canvas implements Runnable {
         hud = new HUD();
         spawner = new Spawn(handler, hud);
         r = new Random();
-        handler.addObject(new MyPlayer(WIDTH / 2, HEIGHT / 2, ID.MyPlayer, handler));
+        handler.addObject(new MyPlayer(WIDTH / 2, HEIGHT / 2, ID.MyPlayer, handler));//first element in handler array
         //handler.addObject(new TestObj(WIDTH / 2, HEIGHT / 2, ID.TestObj, handler));
         //handler.addObject(new Rocket(WIDTH - 200, HEIGHT / 2, ID.Rocket, handler));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52), ID.BasicEnemy, handler));
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52),r.nextInt(3)+1,r.nextInt(3)+1, ID.BasicEnemy, handler));
         handler.addObject(new FastEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52), ID.FastEnemy, handler));
 
     }
 
-    public int playerX() {
+    public  int playerX() {
         int x = 0;
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
@@ -57,7 +57,7 @@ public class Game extends Canvas implements Runnable {
         return x;
     }
 
-    public int playerY() {
+    public  int playerY() {
         int y = 0;
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);

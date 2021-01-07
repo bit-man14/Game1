@@ -5,13 +5,38 @@ import java.util.Random;
 
 public class BasicEnemy extends GameObject {
     int size = 10;
+    int velX;
+    int velY;
+
+    @Override
+    public int getVelX() {
+        return velX;
+    }
+
+    @Override
+    public void setVelX(int velX) {
+        this.velX = velX;
+    }
+
+    @Override
+    public int getVelY() {
+        return velY;
+    }
+
+    @Override
+    public void setVelY(int velY) {
+        this.velY = velY;
+    }
+
     Handler handler;
     Random r=new Random();
-    public BasicEnemy(int x, int y, ID id, Handler handler) {
+    public BasicEnemy(int x, int y,int velX,int velY, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
-        velX = r.nextInt(3)+1;
-        velY = r.nextInt(3)+1;
+        this.velX=velX;
+        this.velY=velY;
+//        velX = r.nextInt(3)+1;
+//        velY = r.nextInt(3)+1;
     }
 
     @Override
