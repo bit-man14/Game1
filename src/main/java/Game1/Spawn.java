@@ -12,7 +12,6 @@ public class Spawn {
         this.handler = handler;
         this.hud = hud;
     }
-
     public void tick() {
         if (HUD.HEALTH > 0) {
             scoreKeep++;
@@ -25,6 +24,7 @@ public class Spawn {
                 Game.enemies += 2;
             }
         }
+        //check player position
 
     }
 }

@@ -22,15 +22,13 @@ public class Game extends Canvas implements Runnable {
     private HUD hud;
     private Spawn spawner;
     public static int frames = 0;
-    public static int enemies=2;
+    public static int enemies = 2;
 
     public static int getFrames() {
         return frames;
     }
 
     public Game() {
-
-
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
         this.addMouseListener(new MouseInput(handler));
@@ -40,15 +38,35 @@ public class Game extends Canvas implements Runnable {
         hud = new HUD();
         spawner = new Spawn(handler, hud);
         r = new Random();
-        handler.addObject(new MyPlayer(WIDTH / 2, HEIGHT / 2, ID.Player, handler));
+        handler.addObject(new MyPlayer(WIDTH / 2, HEIGHT / 2, ID.MyPlayer, handler));
         //handler.addObject(new TestObj(WIDTH / 2, HEIGHT / 2, ID.TestObj, handler));
         //handler.addObject(new Rocket(WIDTH - 200, HEIGHT / 2, ID.Rocket, handler));
         handler.addObject(new BasicEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52), ID.BasicEnemy, handler));
         handler.addObject(new FastEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52), ID.FastEnemy, handler));
 
-
     }
 
+    public int playerX() {
+        int x = 0;
+        for (int i = 0; i < handler.objects.size(); i++) {
+            GameObject tempObject = handler.objects.get(i);
+            if (tempObject.getId() == ID.MyPlayer) {
+                x = tempObject.getX();
+            }
+        }
+        return x;
+    }
+
+    public int playerY() {
+        int y = 0;
+        for (int i = 0; i < handler.objects.size(); i++) {
+            GameObject tempObject = handler.objects.get(i);
+            if (tempObject.getId() == ID.MyPlayer) {
+                y = tempObject.getY();
+            }
+        }
+        return y;
+    }
 
     public synchronized void start() {
         thread = new Thread(this);

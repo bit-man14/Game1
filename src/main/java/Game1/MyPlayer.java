@@ -22,7 +22,7 @@ public class MyPlayer extends GameObject {
         x = Game.clamp(x, 0, Game.WIDTH - 16 - size);
         y = Game.clamp(y, 0, Game.HEIGHT - 42 - size);
 
-        handler.addObject(new Trail(x, y, ID.Player, Color.GREEN, size, size, 0.09f, handler));
+        handler.addObject(new Trail(x, y, ID.MyPlayer, Color.GREEN, size, size, 0.09f, handler));
 
         collision();
     }
@@ -73,7 +73,7 @@ public class MyPlayer extends GameObject {
     @Override
     public void render(Graphics g) {
         int size = 20;
-        if (id == ID.Player) {
+        if (id == ID.MyPlayer) {
             g.setColor(Color.GREEN);
             g.fillOval(x, y, size, size);
         }

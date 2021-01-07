@@ -17,13 +17,13 @@ public class KeyInput extends KeyAdapter {
         int tempSpeed = 5;
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
-            if (tempObject.getId() == ID.Player) {
+            if (tempObject.getId() == ID.MyPlayer) {
                 if (key == KeyEvent.VK_W) tempObject.setVelY(-tempSpeed);
                 if (key == KeyEvent.VK_S) tempObject.setVelY(tempSpeed);
                 if (key == KeyEvent.VK_A) tempObject.setVelX(-tempSpeed);
                 if (key == KeyEvent.VK_D) tempObject.setVelX(tempSpeed);
             }
-            if (tempObject.getId() == ID.Player) {
+            if (tempObject.getId() == ID.MyPlayer) {
                 if (key == KeyEvent.VK_UP) tempObject.setVelY(-tempSpeed);
                 if (key == KeyEvent.VK_DOWN) tempObject.setVelY(tempSpeed);
                 if (key == KeyEvent.VK_LEFT) tempObject.setVelX(-tempSpeed);
@@ -42,14 +42,14 @@ public class KeyInput extends KeyAdapter {
         int key = e.getKeyCode();
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
-            if (tempObject.getId() == ID.Player) {
+            if (tempObject.getId() == ID.MyPlayer) {
                 if (key == KeyEvent.VK_W) tempObject.setVelY(0);
                 if (key == KeyEvent.VK_S) tempObject.setVelY(0);
                 if (key == KeyEvent.VK_A) tempObject.setVelX(0);
                 if (key == KeyEvent.VK_D) tempObject.setVelX(0);
             }
 
-            if (tempObject.getId() == ID.Player) {
+            if (tempObject.getId() == ID.MyPlayer) {
                 if (key == KeyEvent.VK_UP) tempObject.setVelY(0);
                 if (key == KeyEvent.VK_DOWN) tempObject.setVelY(0);
                 if (key == KeyEvent.VK_LEFT) tempObject.setVelX(0);

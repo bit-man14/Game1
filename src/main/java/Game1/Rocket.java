@@ -24,7 +24,7 @@ public class Rocket extends GameObject {
     private void collision() {
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject=handler.objects.get(i);
-            if(tempObject.getId()==ID.Player){
+            if(tempObject.getId()==ID.MyPlayer){
                 if(getBounds().intersects(tempObject.getBounds())){
                     //collision
 

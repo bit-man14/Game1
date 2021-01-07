@@ -1,6 +1,5 @@
 package Game1;
 
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
@@ -19,7 +18,7 @@ public class MouseInput extends MouseAdapter {
                 tempObject.setX(e.getX());
                 tempObject.setY(e.getY());
             }
-            if (tempObject.getId() == ID.Player && e.getButton() == 3) {
+            if (tempObject.getId() == ID.MyPlayer && e.getButton() == 3) {
                 tempObject.setX(e.getX());
                 tempObject.setY(e.getY());
             }
@@ -37,12 +36,12 @@ public class MouseInput extends MouseAdapter {
     public void mouseDragged(MouseEvent e) {
 
         for (int i = 0; i < handler.objects.size(); i++) {
-            GameObject tempObject = handler.objects.get(i);
+            GameObject tempObject = handler.objects. get(i);
             if (tempObject.getId() == ID.TestObj && e.getModifiersEx() == 1024) {
                 tempObject.setX(e.getX());
                 tempObject.setY(e.getY());
             }
-            if (tempObject.getId() == ID.Player && e.getModifiersEx() == 4096) {
+            if (tempObject.getId() == ID.MyPlayer && e.getModifiersEx() == 4096) {
                 tempObject.setX(e.getX());
                 tempObject.setY(e.getY());
                 //handler.addObject(new Trail(tempObject.getX(), tempObject.getY(), ID.Player, Color.GREEN,Player.getSize(),Player.getSize(),0.09f,handler));

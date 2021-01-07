@@ -1,7 +1,7 @@
 package Game1;
 
 public enum ID {
-    Player(),
+    MyPlayer(),
     TestObj(),
     Rocket(),
     Trail(),

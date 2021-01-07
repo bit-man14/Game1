@@ -41,7 +41,7 @@ public class TestObj extends GameObject {
 //                    System.out.println("T Rocket hit!");
                 }
             }
-            if(tempObject.getId()==ID.Player){
+            if(tempObject.getId()==ID.MyPlayer){
                 if(getBounds().intersects(tempObject.getBounds())){
                     //collision
                     //System.out.println("T Player hit!");
