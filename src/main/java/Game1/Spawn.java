@@ -15,12 +15,12 @@ public class Spawn {
     }
 
     public void tick() {
-        int velX;
-        int velY;
+        double velX;
+        double velY;
         int EX;
         int EY;
         int PX;
-        double PY;
+        int PY;
 
         if (HUD.HEALTH > 0) {
             scoreKeep++;
@@ -32,16 +32,23 @@ public class Spawn {
                 SoundEffect.GONG.play();
                 EX = r.nextInt(Game.WIDTH - 26);
                 EY = r.nextInt(Game.HEIGHT - 52);
-                velX = r.nextInt(3) + 1;
-                if (PX < EX) velX *= -1;
-                velY = (int) (velX * (PY - EY) / (PX - EX));// aim the player - raster problem!!!
-                velY = Game.clamp(velY, 1, velX);
+                velX = 1.0 + (3.0 - 1.0) * r.nextDouble();
+                velY = 1.0 + (3.0 - 1.0) * r.nextDouble();
+                if (PX < EX && velX > 0) velX *= -1;
+                if (PX > EX && velX < 0) velX *= -1;
+                if (PY < EY && velY > 0) velY *= -1;
+                if (PY > EY && velY < 0) velY *= -1;
+
                 BasicEnemy newBasicEnemy = new BasicEnemy(EX, EY, velX, velY, ID.BasicEnemy, handler);
-                System.out.println(PX);
-                System.out.println(PY);
-                System.out.println(velX);
-                System.out.println(velY);
-                System.out.println("---");
+//                System.out.println("Player pos:");
+//                System.out.println("PX = " + PX);
+//                System.out.println("PY = " + PY);
+//                System.out.println("EX = " + EX);
+//                System.out.println("EY = " + EY);
+//                System.out.println("Enemy vector:");
+//                System.out.println(velX);
+//                System.out.println(velY);
+//                System.out.println("---");
 
                 handler.addObject(newBasicEnemy);
                 handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH - 26), r.nextInt(Game.HEIGHT - 52), ID.FastEnemy, handler));

@@ -5,7 +5,7 @@ import java.awt.*;
 public abstract class GameObject {
     protected int x, y;
     protected ID id;
-    protected int velX, velY;
+    protected double velX, velY;
 
 
     public GameObject(int x, int y, ID id) {
@@ -44,19 +44,19 @@ public abstract class GameObject {
         this.id = id;
     }
 
-    public int getVelX() {
+    public double getVelX() {
         return velX;
     }
 
-    public void setVelX(int velX) {
+    public void setVelX(double velX) {
         this.velX = velX;
     }
 
-    public int getVelY() {
+    public double getVelY() {
         return velY;
     }
 
-    public void setVelY(int velY) {
+    public void setVelY(double velY) {
         this.velY = velY;
     }
 }

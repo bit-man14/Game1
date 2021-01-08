@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
     private Handler handler;
-
+    private Game game;
     public KeyInput(Handler handler) {
         this.handler = handler;
     }
@@ -32,8 +32,14 @@ public class KeyInput extends KeyAdapter {
 
             //System.out.println("X=" + tempObject.getX() + "    " + "Y=" + tempObject.getY());
         }
-        if (key == KeyEvent.VK_M) {
-            System.out.println("m");
+        if (key == KeyEvent.VK_P) {
+            System.out.println(Game.getFrames());
+//            System.out.println("Pause");
+//            if(game.isRunning()){
+//                game.stop();
+//            }else{
+//                game.start();
+//            }
         }
 
     }

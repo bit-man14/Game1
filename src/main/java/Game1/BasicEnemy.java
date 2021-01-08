@@ -5,32 +5,32 @@ import java.util.Random;
 
 public class BasicEnemy extends GameObject {
     int size = 10;
-    int velX;
-    int velY;
+    double velX;
+    double velY;
 
     @Override
-    public int getVelX() {
+    public double getVelX() {
         return velX;
     }
 
     @Override
-    public void setVelX(int velX) {
+    public void setVelX(double velX) {
         this.velX = velX;
     }
 
     @Override
-    public int getVelY() {
+    public double getVelY() {
         return velY;
     }
 
     @Override
-    public void setVelY(int velY) {
+    public void setVelY(double velY) {
         this.velY = velY;
     }
 
     Handler handler;
     Random r=new Random();
-    public BasicEnemy(int x, int y,int velX,int velY, ID id, Handler handler) {
+    public BasicEnemy(int x, int y,double velX,double velY, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
         this.velX=velX;
@@ -41,11 +41,22 @@ public class BasicEnemy extends GameObject {
 
     @Override
     public void tick() {
-        x += velX;
-        y += velY;
+        int PX = handler.objects.get(0).getX();
+        int PY = handler.objects.get(0).getY();
 
-        if (y <= 0 || y >= Game.HEIGHT - 42 - size) velY *= -1;
-        if (x <= 0 || x >= Game.WIDTH - 16 - size) velX *= -1;
+        //velX = 1.0 + (3.0 - 1.0) * r.nextDouble();
+        //velY = velX * (PY - y) / (PX - x);
+        //velY = Game.clampD(velY, 0.5, 5.0);
+        if (PX < x && velX>0) velX *= -1;
+        if (PX > x && velX<0) velX *= -1;
+        if (PY < y && velY>0) velY *= -1;
+        if (PY > y && velY<0) velY *= -1;
+        x += (int)velX;
+        y += (int)velY;
+
+
+        if (y <= 0 || y >= Game.HEIGHT - 42 - size) velY *= -1.0;
+        if (x <= 0 || x >= Game.WIDTH - 16 - size) velX *= -1.0;
         handler.addObject(new Trail(x,y,ID.Trail,Color.RED,size,size,0.06f,handler));
         collision();
     }
@@ -73,8 +84,8 @@ public class BasicEnemy extends GameObject {
                 if (getBounds().intersects(tempObject.getBounds())) {
                     //collision
                     //velX*=-1;
-                    velX*=-1;
-                    velY*=-1;
+//                    velX*=-1;
+//                    velY*=-1;
 //                    handler.removeObject(this);
 //                    Game.enemies--;
                     //System.out.println("E Rocket hit!");

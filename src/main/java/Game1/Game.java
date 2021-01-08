@@ -24,6 +24,14 @@ public class Game extends Canvas implements Runnable {
     public static int frames = 0;
     public static int enemies = 2;
 
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
     public static int getFrames() {
         return frames;
     }
@@ -41,7 +49,7 @@ public class Game extends Canvas implements Runnable {
         handler.addObject(new MyPlayer(WIDTH / 2, HEIGHT / 2, ID.MyPlayer, handler));//first element in handler array
         //handler.addObject(new TestObj(WIDTH / 2, HEIGHT / 2, ID.TestObj, handler));
         //handler.addObject(new Rocket(WIDTH - 200, HEIGHT / 2, ID.Rocket, handler));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52),r.nextInt(3)+1,r.nextInt(3)+1, ID.BasicEnemy, handler));
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52),1.0 + (3.0 - 1.0) * r.nextDouble(),1.0 + (3.0 - 1.0) * r.nextDouble(), ID.BasicEnemy, handler));
         handler.addObject(new FastEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52), ID.FastEnemy, handler));
 
     }
@@ -157,6 +165,15 @@ public class Game extends Canvas implements Runnable {
 
         return var;
     }
+    public static double clampD(double var, double min, double max) {
+        if (var > max)
+            return max;
+
+        else if (var < min)
+            return min;
+
+        return var;
+    }
 
     public static void playMp3x() {
         AdvancedPlayer player = null;
@@ -186,7 +203,7 @@ public class Game extends Canvas implements Runnable {
 
     public static void main(String[] args) {
         new Game();
-        playMp3x();
+        //playMp3x();
 
     }
 }
