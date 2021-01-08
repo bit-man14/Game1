@@ -1,7 +1,6 @@
 package Game1;
 
 import java.awt.*;
-import java.awt.image.BufferStrategy;
 
 public class MyFigures {
 

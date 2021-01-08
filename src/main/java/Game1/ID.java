@@ -6,5 +6,7 @@ public enum ID {
     Rocket(),
     Trail(),
     FastEnemy(),
+    Gun(),
+    Bullet(),
     BasicEnemy();
 }

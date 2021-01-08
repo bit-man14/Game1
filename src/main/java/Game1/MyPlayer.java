@@ -7,8 +7,8 @@ public class MyPlayer extends GameObject {
     Handler handler;
 
 
-    public MyPlayer(int x, int y, ID id, Handler handler) {
-        super(x, y, id);
+    public MyPlayer(int x, int y, double angle,ID id, Handler handler) {
+        super(x, y,angle, id);
         this.handler = handler;
     }
 
@@ -22,7 +22,7 @@ public class MyPlayer extends GameObject {
         x = Game.clamp(x, 0, Game.WIDTH - 16 - size);
         y = Game.clamp(y, 0, Game.HEIGHT - 42 - size);
 
-        handler.addObject(new Trail(x, y, ID.MyPlayer, Color.GREEN, size, size, 0.09f, handler));
+        handler.addObject(new Trail(x, y,0, ID.MyPlayer, Color.GREEN, size, size, 0.09f, handler));
 
         collision();
     }
@@ -30,19 +30,8 @@ public class MyPlayer extends GameObject {
     private void collision() {
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
-            if (tempObject.getId() == ID.Rocket) {
-                if (getBounds().intersects(tempObject.getBounds())) {
-                    //collision
 
-                    //System.out.println("P Rocket hit!");
-                }
-            }
-            if (tempObject.getId() == ID.TestObj) {
-                if (getBounds().intersects(tempObject.getBounds())) {
-                    //collision
-                    //System.out.println("P Test object hit!");
-                }
-            }
+
             if (tempObject.getId() == ID.BasicEnemy) {
                 if (getBounds().intersects(tempObject.getBounds())) {
                     //collision
@@ -59,14 +48,6 @@ public class MyPlayer extends GameObject {
                     //System.out.println("P Enemy hit!");
                 }
             }
-//            if (tempObject.getId() == ID.Trail) {
-//                if (getBounds().intersects(tempObject.getBounds())) {
-//                    //collision
-//                    SoundEffect.SHOOT.play();
-//                    HUD.HEALTH -= 1;
-//                    System.out.println("P Trail hit!");
-//                }
-//            }
         }
     }
 

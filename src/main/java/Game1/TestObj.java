@@ -6,8 +6,8 @@ public class TestObj extends GameObject {
     Handler handler;
 
 
-    public TestObj(int x, int y, ID id, Handler handler) {
-        super(x, y, id);
+    public TestObj(int x, int y,double angle, ID id, Handler handler) {
+        super(x, y,angle, id);
         this.handler=handler;
 //        velX = 1;
 //        velY = 1;

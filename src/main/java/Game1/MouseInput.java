@@ -27,16 +27,19 @@ public class MouseInput extends MouseAdapter {
     }
 
     public void mouseMoved(MouseEvent e) {
-//
-//        System.out.println("Moved X: " + e.getX());
-//        System.out.println("Moved Y: " + e.getY() + "\n---");
-
+        for (int i = 0; i < handler.objects.size(); i++) {
+            GameObject tempObject = handler.objects.get(i);
+            if (tempObject.getId() == ID.Gun) {
+                tempObject.setAngle(-Math.atan((Game.WIDTH / 2 - e.getX()) / (double)(Game.HEIGHT-e.getY())));
+            }
+            System.out.println(e.getY());
+        }
     }
 
     public void mouseDragged(MouseEvent e) {
 
         for (int i = 0; i < handler.objects.size(); i++) {
-            GameObject tempObject = handler.objects. get(i);
+            GameObject tempObject = handler.objects.get(i);
             if (tempObject.getId() == ID.TestObj && e.getModifiersEx() == 1024) {
                 tempObject.setX(e.getX());
                 tempObject.setY(e.getY());

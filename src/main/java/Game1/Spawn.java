@@ -39,7 +39,7 @@ public class Spawn {
                 if (PY < EY && velY > 0) velY *= -1;
                 if (PY > EY && velY < 0) velY *= -1;
 
-                BasicEnemy newBasicEnemy = new BasicEnemy(EX, EY, velX, velY, ID.BasicEnemy, handler);
+                BasicEnemy newBasicEnemy = new BasicEnemy(EX, EY, 0,velX, velY, ID.BasicEnemy, handler);
 //                System.out.println("Player pos:");
 //                System.out.println("PX = " + PX);
 //                System.out.println("PY = " + PY);
@@ -51,7 +51,7 @@ public class Spawn {
 //                System.out.println("---");
 
                 handler.addObject(newBasicEnemy);
-                handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH - 26), r.nextInt(Game.HEIGHT - 52), ID.FastEnemy, handler));
+                handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH - 26), r.nextInt(Game.HEIGHT - 52),0, ID.FastEnemy, handler));
                 Game.enemies += 2;
                 velX = handler.objects.get(handler.objects.size() - 1).velX;
                 velY = handler.objects.get(handler.objects.size() - 1).velY;

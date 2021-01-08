@@ -9,8 +9,8 @@ public class Trail extends GameObject {
     private Color color;
     private int width, height;
 
-    public Trail(int x, int y, ID id, Color color, int width, int height, float life, Handler handler) {
-        super(x, y, id);
+    public Trail(int x, int y, double angle,ID id, Color color, int width, int height, float life, Handler handler) {
+        super(x, y,angle, id);
         this.color = color;
         this.width = width;
         this.height = height;

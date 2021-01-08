@@ -2,8 +2,8 @@ package Game1;
 
 import java.awt.*;
 
-public class BasicEnemy extends GameObject {
-    int size = 10;
+public class Bullet extends GameObject {
+    int size = 2;
     double velX;
     double velY;
 
@@ -29,7 +29,7 @@ public class BasicEnemy extends GameObject {
 
     Handler handler;
 
-    public BasicEnemy(int x, int y,double angle, double velX, double velY, ID id, Handler handler) {
+    public Bullet(int x, int y, double angle, double velX, double velY, ID id, Handler handler) {
         super(x, y,angle, id);
         this.handler = handler;
         this.velX = velX;
@@ -39,23 +39,10 @@ public class BasicEnemy extends GameObject {
 
     @Override
     public void tick() {
-        int PX = handler.objects.get(0).getX();
-        int PY = handler.objects.get(0).getY();
-
-        if (handler.objects.indexOf(handler.objects.get(handler.objects.size() - 1)) == (handler.objects.size() - 1)) {
-
-            if (PX < x && velX > 0) velX *= -1;
-            if (PX > x && velX < 0) velX *= -1;
-            if (PY < y && velY > 0) velY *= -1;
-            if (PY > y && velY < 0) velY *= -1;
-        }
 
         x += (int) velX;
         y += (int) velY;
 
-
-        if (y <= 0 || y >= Game.HEIGHT - 42 - size) velY *= -1.0;
-        if (x <= 0 || x >= Game.WIDTH - 16 - size) velX *= -1.0;
         handler.addObject(new Trail(x, y,0, ID.Trail, Color.RED, size, size, 0.06f, handler));
         collision();
     }
@@ -63,13 +50,16 @@ public class BasicEnemy extends GameObject {
     private void collision() {
         for (int i = 0; i < handler.objects.size(); i++) {
             GameObject tempObject = handler.objects.get(i);
-            if (tempObject.getId() == ID.Rocket) {
+            if (tempObject.getId() == ID.BasicEnemy) {
                 if (getBounds().intersects(tempObject.getBounds())) {
-                    //collision
-                    //velX*=-1;
                     handler.removeObject(this);
                     Game.enemies--;
-                    //System.out.println("E Rocket hit!");
+                }
+            }
+            if (tempObject.getId() == ID.FastEnemy) {
+                if (getBounds().intersects(tempObject.getBounds())) {
+                    handler.removeObject(this);
+                    Game.enemies--;
                 }
             }
 

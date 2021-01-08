@@ -1,8 +1,8 @@
 package Game1;
 
-import java.io.*;
-import java.net.URL;
 import javax.sound.sampled.*;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * This enum encapsulates all the sound effects of a game, so as to separate the sound playing

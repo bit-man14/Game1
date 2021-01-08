@@ -1,14 +1,7 @@
 package Game1;
 
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.advanced.AdvancedPlayer;
-import javazoom.jl.player.advanced.PlaybackEvent;
-import javazoom.jl.player.advanced.PlaybackListener;
-
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Random;
 
 
@@ -46,11 +39,12 @@ public class Game extends Canvas implements Runnable {
         hud = new HUD();
         spawner = new Spawn(handler, hud);
         r = new Random();
-        handler.addObject(new MyPlayer(WIDTH / 2, HEIGHT / 2, ID.MyPlayer, handler));//first element in handler array
-        //handler.addObject(new TestObj(WIDTH / 2, HEIGHT / 2, ID.TestObj, handler));
-        //handler.addObject(new Rocket(WIDTH - 200, HEIGHT / 2, ID.Rocket, handler));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52),1.0 + (3.0 - 1.0) * r.nextDouble(),1.0 + (3.0 - 1.0) * r.nextDouble(), ID.BasicEnemy, handler));
-        handler.addObject(new FastEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52), ID.FastEnemy, handler));
+        handler.addObject(new MyPlayer(WIDTH / 2, HEIGHT / 2,0, ID.MyPlayer, handler));//first element in handler array
+        handler.addObject(new Gun(100,100,0,ID.Gun, handler));//Gun
+        //handler.addObject(new TestObj(WIDTH / 2, HEIGHT / 2,0, ID.TestObj, handler));
+        //handler.addObject(new Rocket(WIDTH - 200, HEIGHT / 2,0, ID.Rocket, handler));
+        //handler.addObject(new BasicEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52),0,1.0 + (3.0 - 1.0) * r.nextDouble(),1.0 + (3.0 - 1.0) * r.nextDouble(), ID.BasicEnemy, handler));
+        //handler.addObject(new FastEnemy(r.nextInt(WIDTH - 26), r.nextInt(HEIGHT - 52), 0,ID.FastEnemy, handler));
 
     }
 
@@ -175,35 +169,10 @@ public class Game extends Canvas implements Runnable {
         return var;
     }
 
-    public static void playMp3x() {
-        AdvancedPlayer player = null;
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream("D:\\IdeaProjects\\Game1\\src\\main\\resources\\muza.mp3");
-            player = new AdvancedPlayer(fis);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (JavaLayerException e) {
-            e.printStackTrace();
-        }
-
-        player.setPlayBackListener(new PlaybackListener() {
-            @Override
-            public void playbackFinished(PlaybackEvent event) {
-                int pausedOnFrame = 0;
-                pausedOnFrame = event.getFrame();
-            }
-        });
-        try {
-            player.play();
-        } catch (JavaLayerException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) {
         new Game();
-        //playMp3x();
+
 
     }
 }

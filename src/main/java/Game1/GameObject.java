@@ -5,13 +5,22 @@ import java.awt.*;
 public abstract class GameObject {
     protected int x, y;
     protected ID id;
-    protected double velX, velY;
+    protected double velX, velY, angle;
 
 
-    public GameObject(int x, int y, ID id) {
+    public GameObject(int x, int y, double angle, ID id) {
         this.x = x;
         this.y = y;
+        this.angle = angle;
         this.id = id;
+    }
+
+    public double getAngle() {
+        return angle;
+    }
+
+    public void setAngle(double angle) {
+        this.angle = angle;
     }
 
     public abstract void tick();
